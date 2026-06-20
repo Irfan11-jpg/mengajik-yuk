@@ -20,7 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role', // Tambahkan role di sini
+        'role',
     ];
 
     /**
@@ -38,24 +38,11 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
-
-    /**
-     * Cek apakah user adalah Guru
-     */
-    public function isGuru(): bool
+    protected function casts(): array
     {
-        return $this->role === 'guru';
-    }
-
-    /**
-     * Cek apakah user adalah Santri
-     */
-    public function isSantri(): bool
-    {
-        return $this->role === 'santri';
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }
